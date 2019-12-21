@@ -111,7 +111,7 @@ function changeTool(len,flag,ele) {
 		searchTool = tools;
 		oToolsList.style.boxShadow = '';
 		flag1 = false;
-		console.log('tools = ' + tools, '   searchTOol = ' + searchTool)
+		console.log('tools = ' + tools, 'searchTool = ' + searchTool);
 	}else{
 		for(var i = 0; i < len; i++) {
 			oLis[i].className = 'iconfont using';
