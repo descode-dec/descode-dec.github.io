@@ -1,0 +1,135 @@
+html, body {
+	/*height: 100%;*/
+	width: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'microsoft yahei','微软雅黑','consolas';
+}
+.logo {
+	height: 150px;
+	width: 300px;
+	/*border-radius: 50%;*/
+	/*background-image: url('1.png');*/
+	overflow: hidden;
+	margin: 70px auto;
+}
+.logo img {
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+}
+.logo .logo-text {
+	font-size: 50px;
+	vertical-align: top;
+	line-height: 150px;
+	margin-left: 20px;
+	/*float: left;*/
+}
+.search-box {
+	height: 40px;
+	width: 545px;
+	margin: 100px auto;
+	position: relative;
+	/*border: 2px solid #555;*/
+	padding: 5px 15px;
+	border-radius: 40px;
+	box-shadow: 6px 6px 10px #999;
+}
+.search-box::after {
+	content: "";
+	display: block;
+	clear: both;
+}/*
+.search-box .active-tool {
+	display: block;
+	height: 40px;
+	width: 40px;
+	border: 1px solid #000;
+	box-sizing: border-box;
+	margin: 0;
+	float: left;
+}*/
+.search-box .list {
+	/*position: absolute;
+	top: 40px;
+	left: 0;*/
+	float: left;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+	user-select: none;
+}
+.search-box .list li {
+	display: none;
+	height: 40px;
+	width: 45px;
+	/*border: 1px solid #000;*/
+	font-size: 36px;
+	box-sizing: border-box;
+	background-color: #fff;
+	position: relative;
+	z-index: 999;
+	margin-bottom: 3px;
+}
+.search-box .list li > * {
+	display: inline-block;
+	width: 40px;
+	margin: 0 4px;
+}
+.search-box .list .using {
+	display: block;
+}
+.search-box .search-text {
+	height: 40px;
+	width: 490px;
+	/*border: 1px solid red;*/
+	border: 0;
+	text-indent: 15px;
+	font-size: 18px;
+	box-sizing: border-box;
+	outline: 0;
+	text-decoration: none;
+	float: left;
+}
+.search-box .search-btn {
+	display: none;
+	height: 40px;
+	/*width: 110px;*/
+	/*border: 1px solid yellowgreen;*/
+	border: 0;
+	box-sizing: border-box;
+	color: #fff;
+	background-color: blue;
+	font-size: 20px;
+}
+.search-box .word-list {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	z-index: 1;
+	list-style: none;
+	border-top: 0;
+	box-sizing: border-box;
+	text-indent: 20px;
+	box-shadow: 6px 6px 10px #999;
+	border-radius: 0 0 40px 40px;
+	background-color: #fff;
+	overflow: hidden;
+}
+.search-box .word-list li {
+	display: block;
+	height: 30px;
+	width: 575px;
+	overflow: hidden;
+	line-height: 30px;
+	padding: 5px 0;
+
+}
+.search-box .word-list .selected {
+	background: #e0e0e0;
+}
