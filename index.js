@@ -81,7 +81,7 @@ oText.onkeydown = function (e) {
 function requestData() {
 	if(searchTool == 'baidu') {
 		$.ajax({
-			url : "https://suggestion.baidu.com/su",
+			url : "http://suggestion.baidu.com/su",
 			type : "get",
 			dataType : "jsonp",
 			jsonp : "jsoncallback",
@@ -100,7 +100,7 @@ function requestData() {
 
 function changeTool(len,flag,ele) {
 	var flag = flag || false;
-	var ele = ele || whatToolDom();
+	var ele = ele || whatToolDom(searchTool);
 	if(flag) {
 		var tools = ele.getAttribute('tools');
 		for(var i = 0; i < len; i++) {
@@ -111,6 +111,7 @@ function changeTool(len,flag,ele) {
 		searchTool = tools;
 		oToolsList.style.boxShadow = '';
 		flag1 = false;
+		console.log('tools = ' + tools, '   searchTOol = ' + searchTool)
 	}else{
 		for(var i = 0; i < len; i++) {
 			oLis[i].className = 'iconfont using';
@@ -174,13 +175,13 @@ document.onkeydown = function (e) {
 	}
 }
 $("html").click(function (e) {
-	var element = whatToolDom();
+	var element = whatToolDom(searchTool);
     if($(e.target).closest(".list").length == 0){
 		changeTool(oLis.length, true, element);
     }
 });
 
-function whatToolDom() {
+function whatToolDom(searchTool) {
 	var searchTool = searchTool || 'baidu';
 	for(var j = 0; j < oLis.length; j++) {
 		if(searchTool == oLis[j].getAttribute('tools')) {
@@ -190,5 +191,5 @@ function whatToolDom() {
 	return element;
 }
 
-changeTool(oLis.length, true, whatToolDom());
+changeTool(oLis.length, true, whatToolDom(searchTool));
 
