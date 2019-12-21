@@ -81,7 +81,7 @@ oText.onkeydown = function (e) {
 function requestData() {
 	if(searchTool == 'baidu') {
 		$.ajax({
-			url : "http://suggestion.baidu.com/su",
+			url : "https://suggestion.baidu.com/su",
 			type : "get",
 			dataType : "jsonp",
 			jsonp : "jsoncallback",
