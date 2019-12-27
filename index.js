@@ -1,12 +1,13 @@
-var searchTool = getCookie('defaultTools'),
-	oText = document.getElementsByTagName('input')[0],
-	oList = document.getElementsByClassName('word-list')[0],
-	oSearchBox = document.getElementsByClassName('search-box')[0],
-	word = '',
-	oToolsList = document.getElementsByClassName('list')[0],
-	flag1 = false,
-	oLis = oToolsList.getElementsByTagName('li'),
-	ele;
+var searchTool = getCookie('defaultTools'),			// 获取cookie
+	oText = document.getElementsByTagName('input')[0],	// input框
+	oList = document.getElementsByClassName('word-list')[0],	// 联想词列表
+	oSearchBox = document.getElementsByClassName('search-box')[0],		//整个搜索部分的盒子
+	word = '',	// 搜索词
+	oToolsList = document.getElementsByClassName('list')[0],	// 搜索工具列表
+	flag1 = false,		//默认的搜索工具开关变量
+	oLis = oToolsList.getElementsByTagName('li'),	// 搜索工具子元素
+	ele,
+	selectElement;
 
 // 实时请求联想词, input的样式
 oText.oninput = function () {
@@ -22,10 +23,8 @@ oText.oninput = function () {
 
 // 把请求到的联想词写入页面
 function keydata(keys) {
-
 	var len = 5;
 	var oLi = '';
-
 	if(keys.s.length == 0) {
 		oList.innerHTML = "" ;
 		$('.word-list').css('display', 'none');
@@ -44,7 +43,11 @@ function keydata(keys) {
 }
 
 var temp = -1;
-// 联想词上下选择
+
+/** 
+ * 联想词上下选择 
+ */
+
 oText.onkeydown = function (e) {
 	var li = oList.getElementsByTagName('li');
 	var len = li.length;
@@ -64,7 +67,7 @@ oText.onkeydown = function (e) {
 	if(e.which == 38) {
 		if( temp > 0 && temp < len) {
 			temp--;
-		}else if(temp == 0) {
+		}else if(temp == 0 || temp == -1) {
 			// console.log(len);
 			temp = len - 1;
 		}else{
@@ -76,6 +79,51 @@ oText.onkeydown = function (e) {
 	}
 	word = oText.value;
 }
+
+/**
+ * 设置联想词盒子的类名
+ * @param {Object} list - DOM对象 
+ */
+var clearListStyle = function (list) {
+	var len = list.length;
+	for(var i = 0; i < len; i++ ) {
+		list[i].className = '';
+	}
+}
+/**
+ * 清除联想词盒子的类名
+ * @param {Object} list	- DOM对象 
+ * @param {Number} num - 索引值
+ */
+var changeListStyle = function (list, num) {
+	clearListStyle(list);
+	list[num].className = 'selected';
+}
+
+/**
+ * 联想词鼠标选择
+ */
+oList.addEventListener('mouseover', function (e) {
+	var e = e || window.event;
+	var target = e.target || e.srcElement;
+	var li = oList.getElementsByTagName('li');
+	var len = li.length;
+	for(var i = 0 ; i < len; i ++) {
+		if(li[i] === target) {
+			temp = i;
+		}
+	}
+	changeListStyle(li, temp);
+}, false);
+
+oList.addEventListener('mouseout', function (e) {
+	var e = e || window.event;
+	var target = e.target || e.srcElement;
+	target.className = '';
+	temp = -1;
+}, false);
+
+
 
 // 请求关联词数据
 function requestData() {
@@ -111,7 +159,6 @@ function changeTool(len,flag,ele) {
 		searchTool = tools;
 		oToolsList.style.boxShadow = '';
 		flag1 = false;
-		console.log('tools = ' + tools, 'searchTool = ' + searchTool);
 	}else{
 		for(var i = 0; i < len; i++) {
 			oLis[i].className = 'iconfont using';
@@ -163,17 +210,24 @@ var searchWord = function (q) {
 	}else if(searchTool == 'bing'){
 		link = 'https://cn.bing.com/search?q=' + q;
 	}else{
-		alert('这是一个bug');
+		alert('页面发生了预计中不会发生的错误！错误代码: 01');
 	}
 	window.location.href = link;
 }
 
+/** 
+ * 回车搜索
+*/
 document.onkeydown = function (e) {
 	var e = e || window.event;
 	if(e.which == 13) {
 		searchWord(word);
 	}
 }
+
+/**
+ * 点击页面时隐藏搜索工具切换列表
+ */
 $("html").click(function (e) {
 	var element = whatToolDom(searchTool);
     if($(e.target).closest(".list").length == 0){
@@ -181,6 +235,10 @@ $("html").click(function (e) {
     }
 });
 
+/**
+ * 判断搜索工具
+ * @param {string} searchTool 
+ */
 function whatToolDom(searchTool) {
 	var searchTool = searchTool || 'baidu';
 	for(var j = 0; j < oLis.length; j++) {
@@ -192,4 +250,3 @@ function whatToolDom(searchTool) {
 }
 
 changeTool(oLis.length, true, whatToolDom(searchTool));
-
