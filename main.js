@@ -236,4 +236,4 @@ var baidu = {
 		searchObj.keydata(key);
 	}
 }
-console.log("%cI love Sakurajima Mai --2019/12/31 21：46：42", "background-image: linear-gradient(to right, red, blue);color: #fff");
+console.log("%cda i su ki Sakurajima Mai --2019/12/31 21：46：42", "background-image: linear-gradient(to right, red, blue);color: #fff");
