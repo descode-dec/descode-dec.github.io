@@ -1,21 +1,3 @@
-// 设置cookie
-function setCookie(cname,cvalue,exdays){
-	var d = new Date();
-	d.setTime(d.getTime()+(exdays*24*60*60*1000));
-	var expires = "expires="+d.toGMTString();
-	document.cookie = cname+"="+cvalue+"; "+expires;
-}
-// 获取cookie
-function getCookie(cname){
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i].trim();
-		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
-	}
-	return "";
-}
-
 Search.prototype = {
 	init: function() {
 		this.searchTool = getCookie('defaultTool');
@@ -163,7 +145,15 @@ Search.prototype = {
 				success : function(json) {},
 				error : function(xhr) {return}
 			})
-		}else return;
+		}else{
+			$.ajax({
+				url: "https://www.baidu.com/su?ie=utf-8&wd=wd=" + that.oText.value,
+				type: "get",
+				dataType: "jsonp",
+				async: false,
+				timeout: 2000,
+			})
+		}
 	},
 	changeTool : function(len, flag, ele) {
 		var flag = flag || false,
@@ -241,4 +231,9 @@ function Search() {
 	this.init();
 }
 var searchObj = new Search();
-console.log("%cI love Sakurajima Mai", "background-image: linear-gradient(to right, red, blue);color: #fff");
+var baidu = {
+	sug: function(key) {
+		searchObj.keydata(key);
+	}
+}
+console.log("%cI love Sakurajima Mai --2019/12/31 21：46：42", "background-image: linear-gradient(to right, red, blue);color: #fff");

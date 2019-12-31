@@ -40,6 +40,7 @@ body {
 	overflow: hidden;
 	margin: 0 auto 0;
 	padding-top: 150px;
+	font-size: 0;
 }
 .logo img {
 	display: inline-block;
@@ -63,7 +64,7 @@ body {
 	/*border: 2px solid #555;*/
 	padding: 5px 15px;
 	border-radius: 40px;
-	box-shadow: 6px 6px 10px #999;
+	box-shadow: 5px 9px 18px #999;
 	background-color: #fff;
 }
 .search-box::after {
@@ -195,7 +196,31 @@ body {
     margin-left: 8px;
     margin-top: 4px;
     background: rgb(219, 54, 54);
-    border-radius: 50%;
+	border-radius: 50%;
+	color: rgba(0, 0, 0, 0);
+	text-indent: 5px;
+	cursor: default;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+.wrap .alert .alert-head .close-over {
+	animation: closeOver .6s;
+	-webkit-animation: closeOver .4s;
+	color: rgba(0, 0, 0, 0.575);
+	background: rgb(187, 45, 45);
+}
+.wrap .alert .alert-head .close-out {
+	animation: closeOut .6s;
+	-webkit-animation: closeOut .4s;
+}
+@keyframes closeOver {
+	from {color: rgba(0,0,0,0)}
+	to {color: rgba(0, 0, 0, 0.564)}
+}
+@keyframes closeOut {
+	from {color: rgba(0, 0, 0, 0.616)}
+	to {color: rgba(0,0,0,0)}
 }
 .wrap .alert .alert-body .support-btn {
 	position: relative;
@@ -232,11 +257,11 @@ body {
 	box-shadow: 2px 2px 4px #888;
 }
 .wrap .alert .alert-body .left::after {
-	animation: btn-toLeft 1s;
+	animation: btn-toLeft .6s cubic-bezier(.77,.21,.26,.92);
 	/* background-color: rgb(52, 209, 24); */
 }
 .wrap .alert .alert-body .right::after {
-	animation: btn-toRight 1s;
+	animation: btn-toRight .6s cubic-bezier(.77,.21,.26,.92);
 }
 .wrap .alert .alert-body .container {
 	margin: 20px;

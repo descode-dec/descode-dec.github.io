@@ -5,20 +5,29 @@
         adAlert = document.getElementsByClassName('wrap')[1],
         flag = getCookie('supportFlag') || 'false',
         sClose = document.getElementById('sClose'),
-        randomNumber = Math.floor(Math.random()*50);
+        randomNumber = Math.floor(Math.random()*50),
+        close = $('.alert-close');
 
-    if (randomNumber < 4) {
+    if (randomNumber < 5) {
         adAlert.style.display = 'block';
     }
     
+    close.mouseover(function() {
+        close.removeClass('close-out').addClass('close-over');
+    });
+
+    close.mouseout(function() {
+        close.removeClass('close-over').addClass('close-out');
+    })
+
     if (flag == 'true') {
         $('.support-btn').removeClass('init').removeClass('left').addClass('right').addClass('init2');
         $('.support-btn').css('background', 'rgb(52, 209, 24)');
     }else{
         $('.support-btn').removeClass('init2').removeClass('right').addClass('left').addClass('init');
         $('.support-btn').css('background', '#fff');
-    
     }
+
     sClose.onclick = function() {
         adAlert.style.display = 'none';
     }
@@ -26,8 +35,7 @@
 
         oAlert.css('display', 'block');
 
-        var close = $('.alert-close'),
-            sb = $('.support-btn'),
+        var sb = $('.support-btn'),
             jssb = document.getElementsByClassName('support-btn')[0];   // jq 中的click 有点击两下的问题
 
         close.click(function() {
