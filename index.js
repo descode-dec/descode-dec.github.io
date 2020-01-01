@@ -11,15 +11,6 @@
     if (randomNumber < 5) {
         adAlert.style.display = 'block';
     }
-    
-    close.mouseover(function() {
-        close.removeClass('close-out').addClass('close-over');
-    });
-
-    close.mouseout(function() {
-        close.removeClass('close-over').addClass('close-out');
-    })
-
     if (flag == 'true') {
         $('.support-btn').removeClass('init').removeClass('left').addClass('right').addClass('init2');
         $('.support-btn').css('background', 'rgb(52, 209, 24)');
