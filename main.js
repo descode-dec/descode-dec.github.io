@@ -165,7 +165,7 @@ Search.prototype = {
 				this.oLis[i].className = 'iconfont';
 			}
 			ele.className = 'iconfont using';
-			setCookie('defaultTools', tools, 31);
+			setCookie('defaultTool', tools, 31);
 			this.searchTool = tools;
 			this.oToolsList.style.boxShadow = '';
 			this.flag1 = false;
@@ -236,4 +236,4 @@ var baidu = {
 		searchObj.keydata(key);
 	}
 }
-console.log("%cda i su ki Sakurajima Mai --2019/12/31 21：46：42", "background-image: linear-gradient(to right, red, blue);color: #fff");
+console.log("%cda i su ki Sakurajima Mai --2019/12/31", "background-image: linear-gradient(to right, red, blue);color: #fff");
