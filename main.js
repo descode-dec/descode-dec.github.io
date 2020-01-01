@@ -137,7 +137,9 @@ Search.prototype = {
 		 */
 		$("html").click(function(e) {
 			// 本来都是关闭的，直接return
-			if (flag1 == true) return;
+			if (that.flag1 == false) {
+				return;	
+			}
 
 			var ele = that.whatToolDom(that.searchTool);
 			if ($(e.target).closest(".list").length == 0) {
@@ -214,7 +216,7 @@ Search.prototype = {
 			ele = ele || this.whatToolDom(searchTool),
 			len = len || this.oLis.length;
 		if (flag) {
-			// 关闭
+			// 要关闭
 			// 每个搜索工具列表的子元素都有一个属性-tools,他用来识别是哪个工具
 			var tools = ele.getAttribute('tools');
 			for (var i = 0; i < len; i++) {
@@ -226,7 +228,7 @@ Search.prototype = {
 			this.oToolsList.style.boxShadow = '';
 			this.flag1 = false;
 		}else{
-			// 展开
+			// 要展开
 			for (var i = 0; i < len; i++ ) {
 				this.oLis[i].className = 'iconfont using';
 				this.oToolsList.style.boxShadow = '5px 5px 10px #999';
@@ -286,12 +288,14 @@ Search.prototype = {
 
 		var len = keys.s.length,
 			oLi = '';
+		// 无建议词
 		if (len == 0) {
 			this.oList.innerHTML = "";
 			this.oList.style.display = 'none';
 			this.oSearchBox.style.borderRadius = '40px';
 			return;
 		}
+		// 限制长度
 		if (len > 5) {
 			len = 5;
 		}
