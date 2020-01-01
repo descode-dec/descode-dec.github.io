@@ -170,7 +170,6 @@ body {
 	bottom: 0;
 	background-color: rgba(119,119,119,0.5);
 	z-index: 999;
-	display: none;
 }
 .wrap .alert {
 	width: 500px;
@@ -203,24 +202,10 @@ body {
 	user-select: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
+	transition: all 300ms;
 }
-.wrap .alert .alert-head .close-over {
-	animation: closeOver .6s;
-	-webkit-animation: closeOver .4s;
-	color: rgba(0, 0, 0, 0.575);
-	background: rgb(187, 45, 45);
-}
-.wrap .alert .alert-head .close-out {
-	animation: closeOut .6s;
-	-webkit-animation: closeOut .4s;
-}
-@keyframes closeOver {
-	from {color: rgba(0,0,0,0)}
-	to {color: rgba(0, 0, 0, 0.564)}
-}
-@keyframes closeOut {
-	from {color: rgba(0, 0, 0, 0.616)}
-	to {color: rgba(0,0,0,0)}
+.wrap .alert .alert-head .alert-close:hover {
+	background-color: rgb(187,45,45);
 }
 .wrap .alert .alert-body .support-btn {
 	position: relative;
