@@ -5,7 +5,7 @@
 	<title>Desc's Home Page</title>
 	<script src="cookie.js"></script>
 	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https:////at.alicdn.com/t/font_1563649_0stagvbebu9.css">
+	<link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1563649_0stagvbebu9.css">
 	<link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
@@ -51,8 +51,19 @@
 			</div>
 		</div>
 	</div>
+	<div id="collection" class="clearfix">
+	</div>
+	<script>
+		(function() {
+			var exp = navigator.userAgent;
+			if (exp.indexOf("Trident") >= 0) {
+				document.body.innerHTML = '<p style="font-size: 22px;">该网站不会兼容IE浏览器，请使用其他浏览器打开该网站</p>' + '<br>' + '<a href="https://www.firefox.com.cn/"  style="font-size: 25px;">火狐浏览器官网</a>' + '<br>' + '<a href="https://www.google.cn/intl/zh-CN/chrome/" style="font-size: 25px;">谷歌Chrome官网<a>';
+				document.body.style.textAlign = "center"
+			}
+		}());
+	</script>
 	<link rel="stylesheet" type="text/css" href="index.css">
-	<script type="text/javascript" src="main.js"></script>
-	<script src="index.js"></script>
+	<script type="text/javascript" src="demo.js"></script>
+	<script src="index2.js"></script>
 </body>
 </html>

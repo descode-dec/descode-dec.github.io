@@ -15,3 +15,6 @@ function getCookie(cname){
 	}
 	return "";
 }
+var delCookie = function (name) {
+    setCookie(name, ' ', -1);
+};

@@ -39,7 +39,7 @@ body {
 	width: 300px;
 	overflow: hidden;
 	margin: 0 auto 0;
-	padding-top: 150px;
+	padding-top: 80px;
 	font-size: 0;
 }
 .logo img {
@@ -59,7 +59,8 @@ body {
 .search-box {
 	height: 40px;
 	width: 545px;
-	margin: 100px auto;
+	margin: 65px auto;
+	margin-bottom: 90px;
 	position: relative;
 	/*border: 2px solid #555;*/
 	padding: 5px 15px;
@@ -271,4 +272,47 @@ body {
 @keyframes btn-toLeft {
 	from {left: 30px}
 	to {left: 0}
+}
+#collection {
+	text-align: center;
+}
+.collection-box {
+	display: inline-block;
+	height: 120px;
+	width: 120px;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,.2);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 60%;
+	/* float: left; */
+	margin: 8px;
+	position: relative;
+	cursor: pointer;
+}
+.collection-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-style: normal;
+	opacity: 0;
+	color: #222;
+}
+.collection-box:hover .collection-close {
+	opacity: 1;
+}
+#add-btn {
+	display: block;
+	height: 30px;
+	width: 80px;
+	background-color: red;
+	color: #fff;
+	text-decoration: none;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 8px;
+	float:left;
+}
+#add-input {
+	float:left;width: 80%;display: block;height: 30px;margin-top: 8px;box-sizing: border-box;border: 1px solid #888;margin-left: 5px;
 }
