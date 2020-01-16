@@ -54,7 +54,8 @@ Search.prototype = {
 		/**
 		 * 上下选择建议词
 		 */
-		this.oText.onkeydown = function(e) {
+		this.oText.addEventListener('keydown',function(e) {
+			console.log("i love shiina mashiro")
 			// 兼容
 			var e = e || window.event,
 			// 建议词列表的子元素们
@@ -91,7 +92,7 @@ Search.prototype = {
 			}
 			// 待搜索词变成搜索框的内容
 			that.word = that.oText.value;
-		}
+		});
 		/**
 		 * 鼠标移动时，绑定建议词mouseover事件
 		 */

@@ -111,10 +111,10 @@
      * 展示隐藏的设置
      */
     function showHideSetting() {
-        // 展示储存
+        // 暂时储存
         var temp = '';
-        // 做对比的字符串
-        var str = '83657585826574737765776573';
+        // 正则表达式验证字符串是否是要求的
+        var reg = /sakurajimamai/i;
         // 计时器
         var timer;
         
@@ -123,11 +123,11 @@
             var num = getCookie('urlLength') || 0;
             clearTimeout(timer);
             var e = e || window.event;
-            temp += '' + e.which;
+            temp += e.key;
             /**
              * 插入设置窗口
              */
-            if (temp === str) {
+            if (reg.test(temp)) {
                 document.body.appendChild(
                     createDom("div", {
                         class: "wrap"
@@ -274,10 +274,10 @@
     }
 
     var demo = showHideSetting();
-    document.onkeydown = function(e) {
+    document.addEventListener('keypress',function(e) {
         var e = e || window.event;
         if ($(e.target).closest(".search-text").length == 0) {
             demo(e);
         }
-    };
+    },false);
 })();
