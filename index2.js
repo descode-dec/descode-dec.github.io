@@ -3,12 +3,20 @@
     var oSettings = document.getElementById('settings'),
         oAlert = $('.wrap').eq(0),
         adAlert = document.getElementsByClassName('wrap')[1],
-        flag = getCookie('supportFlag') || 'false',
-        randomNumber = Math.floor(Math.random() * 50),
         close = $('.alert-close');
 
     var oCollection = document.getElementById('collection');
+	
+	// 赞助窗口弹出	
+	var randomNumber = Math.floor(Math.random() * 50),
+		flag = getCookie('supportFlag') || 'false';
+	if (randomNumber < 4 && flag == 'false') {
+        adAlert.style.display = 'block';
+    }
 
+	/**
+		设置Cookie里边保存的链接
+	*/
     (function() {
         var len = Number(getCookie('urlLength'));
         for (var i = 1; i < len + 1; i++) {
@@ -30,7 +38,9 @@
         }
     }());
 
-
+	/**
+		通过关闭按钮找到弹窗
+	*/
     function retAlertDom(ele) {
         var ele = ele.parentElement;
         if (ele.getAttribute('class') == 'wrap') {
@@ -41,6 +51,9 @@
         return temp;
     }
 
+	/**
+		虚拟DOM的创建函数
+	*/
     function createDom(tag, props, child) {
         var ele = document.createElement(tag);
         var child = child || [];
@@ -60,15 +73,10 @@
     }
     var arr = [];
     oCollection.onclick = function(e) {
-        // 兼容
         var e = e || window.event;
-        // 点击目标
         var target = e.target || e.srcElement;
-        // 收藏的子元素们
         var son = this.getElementsByTagName('div');
-        // 如果点击目标是自己，返回
         if (target == this) return;
-        // 如果点击的是关闭
         if (target.getAttribute('urlnum')) {
             /**
              * 删除Cookie
@@ -230,9 +238,6 @@
         }
     }
 
-    if (randomNumber < 5) {
-        adAlert.style.display = 'block';
-    }
     if (flag == 'true') {
         $('.support-btn').removeClass('init').removeClass('left').addClass('right').addClass('init2');
         $('.support-btn').css('background', 'rgb(52, 209, 24)');
