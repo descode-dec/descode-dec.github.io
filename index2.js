@@ -1,15 +1,11 @@
 (function() {
-	var oLogo = document.getElementsByClassName('logo')[0];
-	var oImg = document.createElement('div');
-			oImg.src = '123.png';
-			oImg.onload = function() {
-				oLogo.appendChild(oImg);
-			}ad = function() {
-6
-                oLogo.appendChild(oImg);
-7
-            }
-
+    var oLogo = document.getElementsByClassName('logo')[0];
+    var oImg = document.createElement('img');
+    oImg.src = './123.png';
+    oImg.onload = function() {
+        oLogo.appendChild(oImg);
+    }
+	
     var oSettings = document.getElementById('settings'),
         oAlert = $('.wrap').eq(0),
         adAlert = document.getElementsByClassName('wrap')[1],
