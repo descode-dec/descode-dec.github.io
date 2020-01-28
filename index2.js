@@ -2,6 +2,7 @@
     var oLogo = document.getElementsByClassName('logo')[0];
     var oImg = document.createElement('img');
     oImg.src = './123.png';
+    oImg.setAttribute('id', 'logo-img');
     oImg.onload = function() {
         oLogo.appendChild(oImg);
     }
