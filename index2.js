@@ -3,8 +3,10 @@
     var oImg = document.createElement('img');
     oImg.src = './123.png';
     oImg.setAttribute('id', 'logo-img');
+    oImg.setAttribute('alt', 'desc search');
     oImg.onload = function() {
-        oLogo.appendChild(oImg);
+	    var firstChild = oLogo.firstChild;
+	    oLogo.insertBefore(oImg, firstChild);
     }
 	
     var oSettings = document.getElementById('settings'),
