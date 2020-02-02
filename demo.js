@@ -1,28 +1,16 @@
 Search.prototype = {
 	init: function() {
-		// 设置搜索工具
 		this.searchTool = getCookie('defaultTool');
-		// 搜索框
 		this.oText = document.getElementsByTagName('input')[0];
-		// 建议词列表
 		this.oList = document.getElementsByClassName('word-list')[0];
-		// 包含选择搜索工具和搜索框的盒子
 		this.oSearchBox = document.getElementsByClassName('search-box')[0];
-		// 搜索词, 针对键盘操作
 		this.word = '';
-		// 鼠标选中的词， 针对鼠标操作
 		this.selectWord = '';
-		// 搜索工具列表
 		this.oToolsList = document.getElementsByClassName('list')[0];
-		// 搜索工具默认开关变量
 		this.flag1 = false;
-		// 搜索工具列表的子元素们
 		this.oLis = this.oToolsList.getElementsByTagName('li');
-		// 临时储存选择的默认工具DOM对象
 		this.ele = undefined;
-		// 建议词中正在选中的元素位置。比如第一个建议词，temp == 0
 		this.temp = -1;
-		// 储存this
 		var that = this;
 
 		/**
@@ -55,7 +43,6 @@ Search.prototype = {
 		 * 上下选择建议词
 		 */
 		this.oText.addEventListener('keydown',function(e) {
-			console.log("i love shiina mashiro")
 			// 兼容
 			var e = e || window.event,
 			// 建议词列表的子元素们
