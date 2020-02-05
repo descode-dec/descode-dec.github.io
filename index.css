@@ -62,11 +62,16 @@ body {
 	margin: 65px auto;
 	margin-bottom: 90px;
 	position: relative;
-	/*border: 2px solid #555;*/
+	border: 1px solid #dfe1e5;
 	padding: 5px 15px;
 	border-radius: 40px;
-	box-shadow: 5px 9px 18px #999;
 	background-color: #fff;
+}
+.search-box-active {
+	box-shadow: 1px 1px 11px #999;
+}
+.search-box:hover {
+	box-shadow: 1px 1px 11px #999;
 }
 .search-box::after {
 	content: "";
