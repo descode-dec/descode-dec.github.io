@@ -1,27 +1,53 @@
 (function() {
-    var oLogo = document.getElementsByClassName('logo')[0];
-    var oImg = document.createElement('img');
-    oImg.src = './123.png';
-    oImg.setAttribute('id', 'logo-img');
-    oImg.setAttribute('alt', 'desc search');
-    oImg.onload = function() {
-	    var firstChild = oLogo.firstChild;
-	    oLogo.insertBefore(oImg, firstChild);
-    }
-	
+
     var oSettings = document.getElementById('settings'),
         oAlert = $('.wrap').eq(0),
         adAlert = document.getElementsByClassName('wrap')[1],
         close = $('.alert-close');
 
     var oCollection = document.getElementById('collection');
-	
+	/**
+		加载logo
+	*/
+	//	<img src="123.png" alt="desc search" id="logo-img">
+	var oLogo = document.getElementsByClassName('logo')[0],
+		oImg = document.createElement('img');
+	oImg.src = './123.png';
+	oImg.onload = function () {
+		var firstElem = oLogo.getElementsByTagName('*')[0];
+		oLogo.insertBefore(oImg, firstElem);
+	}
+
 	// 赞助窗口弹出	
 	var randomNumber = Math.floor(Math.random() * 50),
 		flag = getCookie('supportFlag') || 'false';
 	if (randomNumber < 4 && flag == 'false') {
         adAlert.style.display = 'block';
     }
+
+    /**
+     * 搜索框交互
+     */
+    var search_box = document.getElementsByClassName('search-box')[0],
+        search_input = document.getElementsByClassName('search-text')[0];
+    search_input.addEventListener('focus', function () {
+        search_box.setAttribute('class', (search_box.className) + ' ' + 'search-box-active');
+    }, false);
+    search_input.addEventListener('blur', function () {
+        var class_arr = Array.prototype.slice.call(search_box.classList);
+        for (var i = 0; i < class_arr.length; i++) {
+            if (class_arr[i] == 'search-box-active') {
+                class_arr.splice(i, 1);
+                break;
+            }
+        }
+        var new_class_name = class_arr.join(' ');
+        search_box.className = new_class_name;
+        
+    }, false);
+
+
+
 
 	/**
 		设置Cookie里边保存的链接
@@ -128,11 +154,9 @@
      * 展示隐藏的设置
      */
     function showHideSetting() {
-        // 暂时储存
         var temp = '';
-        // 正则表达式验证字符串是否是要求的
+        // 验证字符串
         var reg = /sakurajimamai/i;
-        // 计时器
         var timer;
         
         var maxUrl = 5;
